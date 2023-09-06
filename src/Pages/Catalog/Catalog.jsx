@@ -1,57 +1,81 @@
 import {
-  Title,
-  Section,
-  Text,
+  Ul,
   Conteiner,
-  TextForIcon,
-  Wrap,
   Img,
+  Li,
+  Wrap,
+  Text,
+  ColorText,
+  TagText,
+  Button,
+  Box,
+  Icon,
+  IconButton,
+  LoadMoreButton,
+  BoxButton,
 } from './Catalog.styled';
+import icon from 'assets/icons/icons.svg';
+
+import { fetchCars } from 'redux/carSlice/operation';
+import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { selectCars } from 'redux/carSlice/selectors';
 
 export default function Catalog() {
+  const dispatch = useDispatch();
+  const cars = useSelector(selectCars);
+  const [page, setPage] = useState(1);
+  const limit = 8;
+
+  const clickLoadMore = () => {
+    setPage(state => state + 1);
+  };
+
+  useEffect(() => {
+    dispatch(fetchCars({ page, limit }));
+  }, [dispatch, page]);
+
+  const arrayCars = cars.reviews || [];
   return (
     <Conteiner>
-      <Section>
-        <Wrap>
-          <Img
-            src="https://auto-time.com.ua/wp-content/uploads/2021/09/1.svg "
-            alt="Img"
-          />
-          <TextForIcon>Надійні та комфортні автомобілі</TextForIcon>
-        </Wrap>
-        <Wrap>
-          <Img
-            src="https://auto-time.com.ua/wp-content/uploads/2021/09/2.svg  "
-            alt="Img"
-          />
-          <TextForIcon>Ми завжди на зв'язку, 24/7</TextForIcon>
-        </Wrap>
-        <Wrap>
-          <Img
-            src="https://auto-time.com.ua/wp-content/uploads/2021/09/3.svg  "
-            alt="Img"
-          />
-          <TextForIcon>Адресна доставка автомобіля</TextForIcon>
-        </Wrap>
-      </Section>
-      <Section>
-        <img
-          src="https://auto-time.com.ua/wp-content/uploads/2021/04/ride.png"
-          alt=""
-          width="800px"
-        />
-        <div>
-          <Title>Прокат авто – це надійно, комфортно та вигідно!</Title>
-          <Text>
-            Орендуй для ділової зустрічі, на час відпочинку, у разі ремонту
-            свого авто та просто для комфортного пересування у будь-який момент.
-          </Text>
-          <Text>
-            Автомобіль можна обрати та забронювати на потрібний період онлайн, у
-            будь-який зручний час від кількох годин до кількох місяців.
-          </Text>
-        </div>
-      </Section>
+      <Ul>
+        {arrayCars.map(arrayCar => {
+          return (
+            <Li key={arrayCar._id}>
+              <div>
+                <Box>
+                  <Img src={arrayCar.avatarURL} alt="car" />
+                  <IconButton>
+                    <Icon>
+                      <use href={icon + '#icon-heart'}></use>
+                    </Icon>
+                  </IconButton>
+                </Box>
+                <Wrap>
+                  <Text>
+                    {arrayCar.name}
+                    {arrayCar.name && (
+                      <ColorText> {arrayCar.name}</ColorText>
+                    )}, {arrayCar.name}
+                  </Text>
+                  <Text>
+                    <span>${arrayCar.name}</span>
+                  </Text>
+                </Wrap>
+                <TagText>
+                  {arrayCar.review && arrayCar.review.split(' ').join(' | ')}
+                </TagText>
+              </div>
+              <Button type="button">Learn more</Button>
+            </Li>
+          );
+        })}
+      </Ul>
+      <BoxButton>
+        <LoadMoreButton type="button" onClick={clickLoadMore}>
+          Load more
+        </LoadMoreButton>
+      </BoxButton>
     </Conteiner>
   );
 }

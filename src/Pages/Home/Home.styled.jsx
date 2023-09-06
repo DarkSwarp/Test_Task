@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Title = styled.h1`
-  color: #black;
+  font-family: Manrope;
+  color: #121417;
   font-size: 24px;
   font-weight: 600;
   line-height: 33px;
@@ -18,6 +19,7 @@ export const Section = styled.div`
 `;
 
 export const Text = styled.p`
+  font-family: Manrope;
   color: #2e2d2dbc;
   font-size: 16px;
   font-weight: 400;
@@ -44,7 +46,8 @@ export const Wrap = styled.div`
 `;
 
 export const TextForIcon = styled.p`
-  color: #black;
+  font-family: Manrope;
+  color: #121417;
   font-size: 20px;
   font-weight: 600;
   margin: 0;

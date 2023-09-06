@@ -41,3 +41,34 @@ export const Header = styled.header`
   justify-content: center;
   align-items: center;
 `;
+
+export const Icon = styled.svg`
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  stroke: currentColor;
+`;
+
+export const Wrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const PhoneLink = styled.a`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 11px 4px;
+  color: black;
+  transition: color 0.2s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: #3a97e8;
+  }
+`;
