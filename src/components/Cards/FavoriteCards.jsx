@@ -1,3 +1,4 @@
+import ModalButton from 'components/ModalBtn/ModalBtn';
 import {
   Img,
   Li,
@@ -5,7 +6,6 @@ import {
   Text,
   ColorText,
   TagText,
-  Button,
   Box,
   IconButton,
   FavoriteIcon,
@@ -42,7 +42,7 @@ export const FavoritesCards = ({ favoritesCars, toggleCars }) => {
                 {favoritesCars.review && favoritesCars.review.split(' ').join(' | ')}
               </TagText>
             </div>
-            <Button type="button">Learn more</Button>
+            <ModalButton/>>
           </Li>
         );
       })}

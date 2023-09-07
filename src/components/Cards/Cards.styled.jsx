@@ -31,30 +31,6 @@ export const TagText = styled.p`
   margin: 0;
 `;
 
-export const Button = styled.button`
-  display: flex;
-  width: 274px;
-  height: 44px;
-  padding: 12px 99px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-  background: #3470ff;
-  color: #fff;
-  font-family: Manrope;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 20px;
-  border: none;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out;
- 
-  &:hover,
-  &:focus {
-    background: #0B44CD;
-`;
-
 export const Img = styled.img`
   width: 100%;
   height: 100%;
