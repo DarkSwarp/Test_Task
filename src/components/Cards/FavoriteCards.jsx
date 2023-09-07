@@ -42,7 +42,7 @@ export const FavoritesCards = ({ favoritesCars, toggleCars }) => {
                 {favoritesCars.review && favoritesCars.review.split(' ').join(' | ')}
               </TagText>
             </div>
-            <ModalButton/>>
+            <ModalButton/>
           </Li>
         );
       })}
