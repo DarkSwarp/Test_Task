@@ -14,9 +14,7 @@ const carSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchCars.fulfilled, (state, action) => {
-        if (state.cars.reviews) {
-          state.cars = { reviews: [...state.cars.reviews, ...action.payload.reviews] };
-        } else {state.cars = action.payload;}
+        state.cars = action.payload.reviews;
         state.isLoading = false;
         state.error = null;
       })
