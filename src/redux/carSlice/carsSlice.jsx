@@ -14,7 +14,7 @@ const carSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchCars.fulfilled, (state, action) => {
-        state.cars = action.payload.reviews;
+        state.cars = action.payload;
         state.isLoading = false;
         state.error = null;
       })

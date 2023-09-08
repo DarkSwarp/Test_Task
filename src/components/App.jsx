@@ -18,7 +18,7 @@ export const App = () => {
   const toggleCars = ( arrayCar ) => {
     setCars(state => {
       const index = state.findIndex(item => {
-        return item._id === arrayCar._id;
+        return item.id === arrayCar.id;
       });
 
       if (index === -1) {
@@ -26,7 +26,7 @@ export const App = () => {
           return { ...item, like: 1 };
         });
       } else {
-        return state.filter(item => item._id !== arrayCar._id);
+        return state.filter(item => item.id !== arrayCar.id);
       }
     });
   };

@@ -17,15 +17,20 @@ export const CatalogCards = ({ catalogCars, toggleCars, favoritesCars }) => {
   return (
     <>
       {catalogCars.map(catalogCar => {
+        const parts = catalogCar.address.split(', ');
+        const city = parts[1];
+        const country = parts[2];
+        const tagText = `${city} | ${country} | ${catalogCar.rentalCompany} | ${catalogCar.model} | ${catalogCar.id}`;
+
         return (
-          <Li key={catalogCar._id}>
+          <Li key={catalogCar.id}>
             <div>
               <Box>
-                <Img src={catalogCar.avatarURL} alt="car" />
+                <Img src={catalogCar.img} alt="car" />
                 <IconButton onClick={() => toggleCars(catalogCar)}>
                   {favoritesCars &&
                     favoritesCars.findIndex(
-                      favoritesCar => favoritesCar._id === catalogCar._id
+                      favoritesCar => favoritesCar.id === catalogCar.id
                     ) > -1 && (
                       <FavoriteIcon>
                         <use href={icon + '#icon-heart'}></use>
@@ -33,7 +38,7 @@ export const CatalogCards = ({ catalogCars, toggleCars, favoritesCars }) => {
                     )}
                   {favoritesCars &&
                     favoritesCars.findIndex(favoritesCar => {
-                      return favoritesCar._id === catalogCar._id;
+                      return favoritesCar.id === catalogCar.id;
                     }) === -1 && (
                       <Icon>
                         <use href={icon + '#icon-heart'}></use>
@@ -48,19 +53,19 @@ export const CatalogCards = ({ catalogCars, toggleCars, favoritesCars }) => {
               </Box>
               <Wrap>
                 <Text>
-                  {catalogCar.name}
-                  {catalogCar.name && <ColorText> {catalogCar.name}</ColorText>}
-                  , {catalogCar.name}
+                  {catalogCar.make}
+                  {catalogCar.model && (
+                    <ColorText> {catalogCar.model}</ColorText>
+                  )}
+                  , {catalogCar.year}
                 </Text>
                 <Text>
-                  <span>${catalogCar.name}</span>
+                  <span>{catalogCar.rentalPrice}</span>
                 </Text>
               </Wrap>
-              <TagText>
-                {catalogCar.review && catalogCar.review.split(' ').join(' | ')}
-              </TagText>
+              <TagText>{tagText}</TagText>
             </div>
-            <ModalButton />
+            <ModalButton catalogCar={catalogCar} />
           </Li>
         );
       })}

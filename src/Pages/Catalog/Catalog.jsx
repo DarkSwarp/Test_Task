@@ -1,9 +1,4 @@
-import {
-  Ul,
-  Conteiner,
-  LoadMoreButton,
-  BoxButton,
-} from './Catalog.styled';
+import { Ul, Conteiner, LoadMoreButton, BoxButton } from './Catalog.styled';
 
 import { fetchCars } from 'redux/carSlice/operation';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,17 +10,16 @@ export default function Catalog({ toggleCars, favoritesCars }) {
   const dispatch = useDispatch();
   const cars = useSelector(selectCars);
   const [limit, setLimit] = useState(8);
-  const page = 1;
 
   const clickLoadMore = () => {
     setLimit(state => state + 8);
   };
 
   useEffect(() => {
-    dispatch(fetchCars({ page, limit }));
-  }, [dispatch, limit]);
+    dispatch(fetchCars());
+  }, [dispatch]);
 
-  const catalogCars = cars || [];
+  const catalogCars = cars.slice(0, limit) || [];
   return (
     <Conteiner>
       <Ul>

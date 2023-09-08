@@ -16,12 +16,16 @@ export const FavoritesCards = ({ favoritesCars, toggleCars }) => {
   return (
     <>
       {favoritesCars.map(favoritesCars => {
+        const parts = favoritesCars.address.split(', ');
+        const city = parts[1];
+        const country = parts[2];
+        const tagText = `${city} | ${country} | ${favoritesCars.rentalCompany} | ${favoritesCars.model} | ${favoritesCars.id}`;
         return (
-          <Li key={favoritesCars._id}>
+          <Li key={favoritesCars.id}>
             <div>
               <Box>
-                <Img src={favoritesCars.avatarURL} alt="car" />
-                <IconButton onClick={() => toggleCars( favoritesCars )}>
+                <Img src={favoritesCars.img} alt="car" />
+                <IconButton onClick={() => toggleCars(favoritesCars)}>
                   <FavoriteIcon>
                     <use href={icon + '#icon-heart'}></use>
                   </FavoriteIcon>
@@ -29,20 +33,19 @@ export const FavoritesCards = ({ favoritesCars, toggleCars }) => {
               </Box>
               <Wrap>
                 <Text>
-                  {favoritesCars.name}
-                  {favoritesCars.name && (
-                    <ColorText> {favoritesCars.name}</ColorText>
-                  )}, {favoritesCars.name}
+                  {favoritesCars.make}
+                  {favoritesCars.model && (
+                    <ColorText> {favoritesCars.model}</ColorText>
+                  )}
+                  , {favoritesCars.year}
                 </Text>
                 <Text>
-                  <span>${favoritesCars.name}</span>
+                  <span>${favoritesCars.rentalPrice}</span>
                 </Text>
               </Wrap>
-              <TagText>
-                {favoritesCars.review && favoritesCars.review.split(' ').join(' | ')}
-              </TagText>
+              <TagText>{tagText}</TagText>
             </div>
-            <ModalButton/>
+            <ModalButton />
           </Li>
         );
       })}

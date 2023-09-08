@@ -41,6 +41,7 @@ export const Img = styled.img`
       rgba(18, 20, 23, 0) 41.07%
     ),
     #f3f3f2;
+  object-fit: cover;
 `;
 
 export const Box = styled.div`
