@@ -13,8 +13,9 @@ export const Ul = styled.ul`
 export const Conteiner = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 40px 129px 40px 128px;
+  padding: 0px 129px 0px 128px;
   width: 1183px;
+  margin-top: 50px;
 `;
 
 export const LoadMoreButton = styled.button`
@@ -46,5 +47,13 @@ export const BoxButton = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 100px;
+`;
+
+export const Wrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 42px;
 `;
 

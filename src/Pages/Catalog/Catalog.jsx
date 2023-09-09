@@ -1,39 +1,51 @@
-import { Ul, Conteiner, LoadMoreButton, BoxButton } from './Catalog.styled';
+import {
+  Ul,
+  Conteiner,
+  LoadMoreButton,
+  BoxButton,
+  Wrap,
+} from './Catalog.styled';
+import React, {  useState } from 'react';
 
-import { fetchCars } from 'redux/carSlice/operation';
-import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect, useState } from 'react';
-import { selectCars } from 'redux/carSlice/selectors';
 import { CatalogCards } from 'components/Cards/CatalogCards';
+import { Search } from 'components/Search/Search';
 
-export default function Catalog({ toggleCars, favoritesCars }) {
-  const dispatch = useDispatch();
-  const cars = useSelector(selectCars);
+export default function Catalog({
+  toggleCars,
+  favoritesCars,
+  cars,
+  filterCatalogCars,
+  carsArray,
+  inputPrice,
+}) {
   const [limit, setLimit] = useState(8);
 
   const clickLoadMore = () => {
     setLimit(state => state + 8);
   };
 
-  useEffect(() => {
-    dispatch(fetchCars());
-  }, [dispatch]);
-
   const catalogCars = cars.slice(0, limit) || [];
   return (
-    <Conteiner>
-      <Ul>
-        <CatalogCards
-          catalogCars={catalogCars}
-          toggleCars={toggleCars}
-          favoritesCars={favoritesCars}
-        />
-      </Ul>
-      <BoxButton>
-        <LoadMoreButton type="button" onClick={clickLoadMore}>
-          Load more
-        </LoadMoreButton>
-      </BoxButton>
-    </Conteiner>
+    <Wrap>
+      <Search
+        filterCatalogCars={filterCatalogCars}
+        carsArray={carsArray}
+        inputPrice={inputPrice}
+      />
+      <Conteiner>
+        <Ul>
+          <CatalogCards
+            catalogCars={catalogCars}
+            toggleCars={toggleCars}
+            favoritesCars={favoritesCars}
+          />
+        </Ul>
+        <BoxButton>
+          <LoadMoreButton type="button" onClick={clickLoadMore}>
+            Load more
+          </LoadMoreButton>
+        </BoxButton>
+      </Conteiner>
+    </Wrap>
   );
 }

@@ -17,7 +17,7 @@ export const ModalDiv = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 469px;
-  height: 698px;
+  height-min: 698px;
   border-radius: 24px;
   background: #fff;
   padding: 15px 37px 40px 35px;

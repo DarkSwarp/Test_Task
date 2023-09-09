@@ -68,7 +68,7 @@ export const Icon = styled.svg`
   width: 18px;
   height: 18px;
   fill: none;
-  stroke: currentColor;
+  stroke: #fff;
 `;
 
 export const FavoriteIcon = styled.svg`
