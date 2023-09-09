@@ -28,9 +28,9 @@ export const BtnText = styled.span`
 
 export const InputTo = styled.input`
   display: flex;
-  width: 73px;
+  width: 136px;
   height: 16px;
-  padding: 16px 63px 16px 24px;
+  padding: 16px 0px 16px 24px;
   align-items: center;
   border-radius: 0px 14px 14px 0px;
   background: #f7f7fb;
@@ -46,9 +46,9 @@ export const InputTo = styled.input`
 
 export const InputFrom = styled.input`
   display: flex;
-  width: 73px;
+  width: 136px;
   height: 16px;
-  padding: 16px 41px 16px 24px;
+  padding: 16px 0px 16px 24px;
   align-items: center;
   border-radius: 14px 0px 0px 14px;
   border: none;

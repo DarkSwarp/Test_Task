@@ -47,11 +47,22 @@ export const Search = ({ filterCatalogCars, carsArray, inputPrice }) => {
       onSubmit={e => {
         e.preventDefault();
         if (mileageFrom || mileageTo || price || selectedCar) {
-          filterCatalogCars(selectedCar, price, mileageFrom, mileageTo);
-          setMileageTo('');
-          setMileageFrom('');
-          setSelectedCar('');
-          setPrise('');
+          if (
+            parseInt(mileageFrom.replace(/,/g, '')) >
+            parseInt(mileageTo.replace(/,/g, ''))
+          ) {
+            filterCatalogCars(selectedCar, price, mileageTo, mileageFrom);
+            setMileageTo('');
+            setMileageFrom('');
+            setSelectedCar('');
+            setPrise('');
+          } else {
+            filterCatalogCars(selectedCar, price, mileageFrom, mileageTo);
+            setMileageTo('');
+            setMileageFrom('');
+            setSelectedCar('');
+            setPrise('');
+          }
         }
       }}
     >
@@ -115,11 +126,13 @@ export const Search = ({ filterCatalogCars, carsArray, inputPrice }) => {
           name="from"
           value={`From ${mileageFrom}`}
           onChange={handleCarChange}
+          placeholder="1,111"
         />
         <InputTo
           name="to"
           value={`To ${mileageTo}`}
           onChange={handleCarChange}
+          placeholder="1,111"
         />
       </MileageLabel>
 

@@ -93,9 +93,16 @@ export const App = () => {
           parseInt(catalogCar.rentalPrice.replace('$', '')) < parseInt(price)
         )
           return false;
-        if (mileageFrom && catalogCar.mileage < parseInt(mileageFrom))
+        if (
+          mileageFrom &&
+          catalogCar.mileage < parseInt(mileageFrom.replace(/,/g, ''))
+        )
           return false;
-        if (mileageTo && catalogCar.mileage > parseInt(mileageTo)) return false;
+        if (
+          mileageTo &&
+          catalogCar.mileage > parseInt(mileageTo.replace(/,/g, ''))
+        )
+          return false;
         return true;
       })
     );
@@ -104,7 +111,7 @@ export const App = () => {
   };
 
   const filterFavoriteCars = (make, price, mileageFrom, mileageTo) => {
-    setFilterFavorite(
+     setFilterFavorite(
       cars.filter(car => {
         if (make && car.make !== make) return false;
         if (
