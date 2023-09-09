@@ -81,7 +81,7 @@ export const MileageLabel = styled.label`
 
 export const SelectPrice = styled.select`
   display: flex;
-  width: 98px;
+  width: 100px;
   padding: 14px 18px;
   align-items: flex-start;
   gap: 32px;

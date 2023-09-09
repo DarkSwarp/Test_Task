@@ -39,14 +39,20 @@ export const App = () => {
   }, [catalogCars]);
 
   if (catalogCars) {
-    carsArray = catalogCars.map(catalogCar => catalogCar.make);
+    const tempCarsArray = catalogCars.map(catalogCar => catalogCar.make);
+    carsArray = tempCarsArray.filter((array, index, newArray) => {
+      return newArray.indexOf(array) === index;
+    });
     pricesArray = catalogCars.map(catalogCar =>
       parseInt(catalogCar.rentalPrice.replace('$', ''))
     );
   }
 
   if (cars) {
-    carsArrayFavorite = cars.map(car => car.make);
+    const tempCarsArray = cars.map(car => car.make);
+    carsArrayFavorite = tempCarsArray.filter((array, index, newArray) => {
+      return newArray.indexOf(array) === index;
+    });
     pricesArrayFavorite = cars.map(car =>
       parseInt(car.rentalPrice.replace('$', ''))
     );
