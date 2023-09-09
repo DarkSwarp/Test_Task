@@ -15,17 +15,31 @@ import icon from 'assets/icons/icons.svg';
 export const FavoritesCards = ({ favoritesCars, toggleCars }) => {
   return (
     <>
-      {favoritesCars.map(favoritesCars => {
-        const parts = favoritesCars.address.split(', ');
+      {favoritesCars.map(favoritesCar => {
+        const parts = favoritesCar.address.split(', ');
         const city = parts[1];
         const country = parts[2];
-        const tagText = `${city} | ${country} | ${favoritesCars.rentalCompany} | ${favoritesCars.model} | ${favoritesCars.id}`;
+        let functionalities;
+        if (favoritesCar.functionalities[0].length <= 25) {
+          functionalities = favoritesCar.functionalities[0];
+        } else if (favoritesCar.functionalities[1].length <= 25) {
+          functionalities = favoritesCar.functionalities[1];
+        } else if (favoritesCar.functionalities[2].length <= 25) {
+          functionalities = favoritesCar.functionalities[2];
+        } else if (favoritesCar.functionalities[0].length <= 25) {
+          functionalities = favoritesCar.functionalities[0];
+        } else if (favoritesCar.functionalities[1].length <= 25) {
+          functionalities = favoritesCar.functionalities[1];
+        } else if (favoritesCar.functionalities[2].length <= 25) {
+          functionalities = favoritesCar.functionalities[2];
+        }
+        const tagText = `${city} | ${country} | ${favoritesCar.rentalCompany} | Premium ${favoritesCar.type} | ${favoritesCar.model} | ${favoritesCar.id} | ${functionalities}`;
         return (
-          <Li key={favoritesCars.id}>
+          <Li key={favoritesCar.id}>
             <div>
               <Box>
-                <Img src={favoritesCars.img} alt="car" />
-                <IconButton onClick={() => toggleCars(favoritesCars)}>
+                <Img src={favoritesCar.img} alt="car" />
+                <IconButton onClick={() => toggleCars(favoritesCar)}>
                   <FavoriteIcon>
                     <use href={icon + '#icon-heart'}></use>
                   </FavoriteIcon>
@@ -33,14 +47,14 @@ export const FavoritesCards = ({ favoritesCars, toggleCars }) => {
               </Box>
               <Wrap>
                 <Text>
-                  {favoritesCars.make}
-                  {favoritesCars.model && (
-                    <ColorText> {favoritesCars.model}</ColorText>
+                  {favoritesCar.make}
+                  {favoritesCar.model && (
+                    <ColorText> {favoritesCar.model}</ColorText>
                   )}
-                  , {favoritesCars.year}
+                  , {favoritesCar.year}
                 </Text>
                 <Text>
-                  <span>${favoritesCars.rentalPrice}</span>
+                  <span>{favoritesCar.rentalPrice}</span>
                 </Text>
               </Wrap>
               <TagText>{tagText}</TagText>

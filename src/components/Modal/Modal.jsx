@@ -16,7 +16,10 @@ import {
   RentalText,
   RentalTextColor,
   Button,
+  IconButton,
+  Icon,
 } from './Modal.styles';
+import icon from 'assets/icons/icons.svg';
 
 const modalRoot = document.querySelector('#modal-root');
 const Modal = ({ closeModal, catalogCar }) => {
@@ -82,14 +85,22 @@ const Modal = ({ closeModal, catalogCar }) => {
             <RentalText>{rentalCondition[1]}</RentalText>
             <RentalText>{rentalCondition[2]}</RentalText>
             <RentalText>
-              Mileage: <RentalTextColor>{catalogCar.mileage}</RentalTextColor>
+              Mileage:{' '}
+              <RentalTextColor>
+                {catalogCar.mileage.toLocaleString("en-US")}
+              </RentalTextColor>
             </RentalText>
             <RentalText>
               Price: <RentalTextColor>{catalogCar.rentalPrice}</RentalTextColor>
             </RentalText>
           </RentalConditions>
-          <Button>Rental car</Button>
+          <Button href="tel:+380730000000">Rental car</Button>
         </Wrap>
+        <IconButton onClick={() => closeModal()}>
+          <Icon>
+            <use href={icon + '#icon-close'}></use>
+          </Icon>
+        </IconButton>
       </ModalDiv>
     </Overlay>,
     modalRoot

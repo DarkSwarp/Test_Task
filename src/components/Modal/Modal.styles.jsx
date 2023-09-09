@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Overlay = styled.div`
   position: fixed;
+  overflow-y: auto;
   top: 0;
   left: 0;
   width: 100vw;
@@ -27,6 +28,7 @@ export const Img = styled.img`
   height: 100%;
   display: block;
   border-radius: 14px;
+  object-fit: cover;
 `;
 
 export const Box = styled.div`
@@ -142,10 +144,10 @@ export const RentalTextColor = styled.span`
   margin: 0;
 `;
 
-export const Button = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const Button = styled.a`
+  display: block;
+  width: 68px;
+  height: 20px;
   padding: 12px 50px;
   background: #3470ff;
   color: #fff;
@@ -158,9 +160,35 @@ export const Button = styled.button`
   border: none;
   margin-top: 31px;
   cursor: pointer;
+  text-decoration: none;
   transition: color 0.2s ease-in-out;
 
     &:hover,
     &:focus {
     background: #0B44CD;
+`;
+
+export const Icon = styled.svg`
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  stroke: currentColor;
+`;
+
+export const IconButton = styled.button`
+  top: 16px;
+  right: 16px;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: none;
+  color: #black;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: #3470FF;
 `;

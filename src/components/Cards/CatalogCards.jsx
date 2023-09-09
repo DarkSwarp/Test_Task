@@ -20,7 +20,22 @@ export const CatalogCards = ({ catalogCars, toggleCars, favoritesCars }) => {
         const parts = catalogCar.address.split(', ');
         const city = parts[1];
         const country = parts[2];
-        const tagText = `${city} | ${country} | ${catalogCar.rentalCompany} | ${catalogCar.model} | ${catalogCar.id}`;
+        let functionalities;
+        if (catalogCar.functionalities[0].length <= 25) {
+          functionalities = catalogCar.functionalities[0];
+        } else if (catalogCar.functionalities[1].length <= 25) {
+          functionalities = catalogCar.functionalities[1];
+        } else if (catalogCar.functionalities[2].length <= 25) {
+          functionalities = catalogCar.functionalities[2];
+        } else if (catalogCar.accessories[0].length <= 25) {
+          functionalities = catalogCar.accessories[0];
+        } else if (catalogCar.accessories[1].length <= 25) {
+          functionalities = catalogCar.accessories[1];
+        } else if (catalogCar.accessories[2].length <= 25) {
+          functionalities = catalogCar.accessories[2];
+        }
+
+        const tagText = `${city} | ${country} | ${catalogCar.rentalCompany} | Premium ${catalogCar.type} | ${catalogCar.model} | ${catalogCar.id} | ${functionalities}`;
 
         return (
           <Li key={catalogCar.id}>

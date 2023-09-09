@@ -69,11 +69,6 @@ export const Icon = styled.svg`
   height: 18px;
   fill: none;
   stroke: currentColor;
-
-  &:hover,
-  &:focus {
-    fill: #3470FF;
-    stroke: #3470FF;
 `;
 
 export const FavoriteIcon = styled.svg`
@@ -95,4 +90,10 @@ export const IconButton = styled.button`
   border: none;
   padding: 0;
   cursor: pointer;
+  transition: color 0.2s ease-in-out;
+
+&:hover,
+  &:focus {
+    color: #3470FF;
+
 `;

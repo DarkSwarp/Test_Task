@@ -22,9 +22,7 @@ export const App = () => {
       });
 
       if (index === -1) {
-        return [...state, arrayCar].map(item => {
-          return { ...item, like: 1 };
-        });
+        return [...state, arrayCar]
       } else {
         return state.filter(item => item.id !== arrayCar.id);
       }
