@@ -38,6 +38,10 @@ export const App = () => {
     setFilterCar(catalogCars);
   }, [catalogCars]);
 
+  useEffect(() => {
+    setFilterFavorite(cars);
+  }, [cars]);
+
   if (catalogCars) {
     const tempCarsArray = catalogCars.map(catalogCar => catalogCar.make);
     carsArray = tempCarsArray.filter((array, index, newArray) => {

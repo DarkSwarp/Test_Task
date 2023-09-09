@@ -59,7 +59,7 @@ export const FavoritesCards = ({ favoritesCars, toggleCars }) => {
               </Wrap>
               <TagText>{tagText}</TagText>
             </div>
-            <ModalButton />
+            <ModalButton catalogCar={favoritesCar} />
           </Li>
         );
       })}
