@@ -73,7 +73,9 @@ export const Search = ({ filterCatalogCars, carsArray, inputPrice }) => {
           value={selectedCar}
           onChange={handleCarChange}
         >
-          <option value="">Select a car</option>
+          <option value="" disabled selected>
+            Select a car
+          </option>
           {carsArray.map(car => {
             if (car === selectedCar) {
               return (
@@ -102,7 +104,9 @@ export const Search = ({ filterCatalogCars, carsArray, inputPrice }) => {
       <PriceLabel>
         <PriceText>Price/ 1 hour</PriceText>
         <SelectPrice name="priceCar" value={price} onChange={handleCarChange}>
-          <Option value="">To $</Option>
+          <Option value="" disabled selected>
+            To $
+          </Option>
           {inputPrice.map(input => {
             if (input === parseInt(price)) {
               return (
